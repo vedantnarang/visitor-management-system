@@ -1,0 +1,271 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #FFDE4D;
+  background-repeat: repeat;
+  color: rgb(208, 139, 10);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background: whitesmoke;
+  background-blend-mode: hue;
+  opacity: 0.96;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+h1 {
+  margin-top: 10px;
+  font-size: 24px;
+  color: #B85C38;
+}
+
+form {
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+.form-group {
+  padding: 7px 0px 7px 0px;
+}
+
+.upper-form-group {
+  display: flex;
+  margin-bottom: 15px;
+  flex-direction: column;
+  padding-top: 20px;
+}
+.lower-form-group {
+  display: flex;
+  margin-bottom: 15px;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #603b26;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 8px;
+  border: 3px solid rgb(208, 139, 10);
+  border-radius: 7px;
+  box-sizing: border-box;
+  background-color: white;
+  color: rgb(235, 158, 13);
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.radio-group label {
+  margin: 0;
+}
+
+.radio-group input {
+  margin-right: 5px;
+}
+.id-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#visitor-id-proof {
+  min-width: 340px;
+}
+#id-proof-number {
+  min-width: 340px;
+}
+
+.photo-capture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#video,
+#canvas {
+  margin: 10px 0;
+  border: 2px solid rgb(208, 139, 10);
+  border-radius: 4px;
+}
+
+button[type="button"],
+button[type="submit"] {
+  padding: 10px 20px;
+  border: solid 3px rgb(208, 139, 10);
+  border-radius: 4px;
+  background-color: #FFF2D8;
+  color: #603b26;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+button[type="button"]:hover,
+button[type="submit"]:hover {
+  background-color: orange;
+  color: #151410;
+  box-shadow: 10px darkgrey;
+  position: relative;
+  cursor: pointer;
+}
+.id-card {
+  display: none;
+  /* margin-top: 180px;
+  padding: 10px;
+  border: solid 6px orange;
+  border-radius: 10px;
+  background-color: #FFC96F;
+  color: white; */
+}
+.id-card-photo img {
+  /* width: 250px;
+  height: 300px; */
+  border: solid 4px orange;
+  border-radius: 10px; 
+  display: flex;
+  flex-direction: column;
+}
+#id-photo {
+  width: 250px;
+  height: 250px;
+}
+#logo {
+  width: 200px;
+  height: 100px;
+  margin-left: 15px;
+  margin-bottom: 2px;
+  position: relative;
+  left: 225px;
+  align-self: center;
+}
+.id-card-info {
+  margin-left: 20px;
+  margin-right: 30px;
+  align-self: center;
+}
+
+.id-card-info p {
+  margin: 10px 0;
+  text-align: right;
+}
+.id-card-photo-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+@media (max-width: 768px) {
+  .container {
+      padding: 10px;
+  }
+
+  label {
+      font-size: 14px;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="number"] {
+      padding: 6px;
+  }
+
+  button[type="button"],
+  button[type="submit"] {
+      padding: 8px 16px;
+      font-size: 14px;
+  }
+
+  .id-card-info {
+      margin-left: 10px;
+  }
+
+  .id-card-photo img {
+      width: 100px;
+      height: 150px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+      max-width: 700px;
+  }
+}
+
+@media print {
+  body {
+      visibility: hidden;
+  }
+  .id-card-info {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+  }
+  #id-card, #id-card-info {
+      visibility: visible;
+      display: flex;
+  }
+  #id-card-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+  }
+  p {
+      font-size: larger;
+  }
+  #id-card {
+      page-break-after: always;
+      position: absolute;
+      width: 700px;
+      top: 20px;
+      padding: 20px;
+      border: solid 8px orange;
+      border-radius: 20px;
+  }
+  #id-photo {
+      border: solid 4px orange;
+      border-radius: 10px;
+      margin-right: 20px;
+      margin-top: 30px;
+  }
+  h1, title {
+      display: none;
+      visibility: hidden;
+  }
+}

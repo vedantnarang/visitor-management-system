@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Management System</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="" alt="companys logo" class="logo">
+            <h1>Visitor Management System</h1>
+        </div>
+        <form id="visitor-form" action="/submit-visitor" method="POST" enctype="multipart/form-data">
+            <div class="upper-form-group">
+                <div class="form-group">
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone No*</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email ID*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="id-section">
+                <div class="form-group">
+                    <label for="visitor-id-proof">ID Proof Type*</label>
+                    <select id="visitor-id-proof" name="id_proof">
+                        <option value="">--Select Type of ID Proof--</option>
+                        <option value="aadhar-card">Aadhar Card</option>
+                        <option value="driving-license">Driving License</option>
+                        <option value="pan-card">PAN Card</option>
+                        <option value="voter-id">Voter ID</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="id-proof-number">ID Proof Number</label>
+                    <input type="text" id="id-proof-number" name="id_proof_number">
+                </div>
+            </div>
+            <div class="lower-form-group">
+                <div class="form-group">
+                    <label>Gender*</label>
+                    <div class="radio-group">
+                        <input type="radio" id="male" name="gender" value="M" required>
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="F" required>
+                        <label for="female">Female</label>
+                        <input type="radio" id="other" name="gender" value="O" required>
+                        <label for="other">Other</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="purpose">Purpose Of Meeting*</label>
+                    <input type="text" id="purpose" name="purpose" required>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department*</label>
+                    <select id="department" name="department" required>
+                        <option value="">--Select Department--</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="HR">HR</option>
+                        <option value="IT">IT</option>
+                        <option value="SCM">SCM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="designation">Designation</label>
+                    <input type="text" name="designation" id="designation">
+                </div>
+                <div class="form-group">
+                    <label for="person">To Meet*</label>
+                    <select id="person" name="to_meet" required>
+                        <option value="">--Select Whom You Want To Meet--</option>
+                        <option data-department="Finance" value="Mr. Praveen Sharma">Mr. Praveen Sharma</option>
+                        <option data-department="Finance" value="Mr. Lalit Kumar">Mr. Lalit Kumar</option>
+                        <option data-department="Marketing" value="Mr. Abc">Mr. Abc</option>
+                        <option data-department="Marketing" value="Mr. Xyz">Mr. Xyz</option>
+                        <option data-department="HR" value="Mr. Afroz">Mr. Afroz</option>
+                        <option data-department="HR" value="Mrs. Neetu">Mrs. Neetu </option>
+                        <option data-department="HR" value="Mr. Ranbir">Mr. Ranbir</option>
+                        <option data-department="IT" value="Mr. Yogendra Singh">Mr. Yogendra Singh</option>
+                        <option data-department="IT" value="Mr. Chandan Singh">Mr. Chandan Singh</option>
+                        <option data-department="IT" value="Mr. Ravindra">Mr. Ravindra</option>
+                        <option data-department="SCM" value="Mr. Abc">Mr. Abc</option>
+                        <option data-department="SCM" value="Mr. Xyz">Mr. Xyz</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="intime">In-Time*</label>
+                    <input type="text" id="intime" name="intime" placeholder="AUTO-GENERATED" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo*</label>
+                    <div class="photo-capture">
+                        <video id="video" width="320" height="240" autoplay></video>
+                        <button type="button" id="snap">CLICK!</button>
+                        <canvas id="canvas" width="320" height="240"></canvas>
+                        <input type="hidden" id="photo" name="photo">
+                    </div>
+                </div>
+                <div class="photo-capture">
+                    <button action="/submit-visitor" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+        <div class="id-card" id="id-card">
+            <div class="id-card-logo" id="id-card-logo">
+                <img id="logo" src=""  alt= "companys Logo">
+            </div>
+            <div class="id-card-photo-info" id="id-card-photo-info">        
+                <div class="id-card-photo">
+                   <img id="id-photo" src="" alt="Visitor Photo">
+                </div>    
+                <div class="id-card-info" id="id-card-info">
+                    <p>Name: <span id="id-name"></span></p>
+                    <p>Phone No: <span id="id-phone"></span></p>
+                    <p>To Meet: <span id="id-person"></span></p>
+                    <p>Department: <span id="id-department-display"></span></p>
+                    <p>Time In: <span id="id-intime"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('visitor-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            formData.set('intime', new Date().toISOString());
+
+            const canvas = document.getElementById('canvas');
+            const photo = canvas.toDataURL('image/png');
+            formData.set('photo', photo);
+
+            fetch('/submit-visitor', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server response:', data);
+                if (data.message === 'Visitor added successfully') {
+                    alert('Visitor added successfully. Visitor ID: ' + data.visitorId);
+
+                    document.getElementById('id-name').innerText = formData.get('name');
+                    document.getElementById('id-phone').innerText = formData.get('phone');
+                    document.getElementById('id-person').innerText = formData.get('to_meet');
+                    document.getElementById('id-department-display').innerText = formData.get('department');
+                    document.getElementById('id-intime').innerText = new Date().toLocaleString();
+                    document.getElementById('id-photo').src = photo;
+                } else {
+                    alert('Error: ' + data.message);
+                    if (data.missingFields) {
+                        alert('Missing fields: ' + data.missingFields.join(', '));
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error adding visitor.');
+            });
+        });
+
+        document.getElementById('snap').addEventListener('click', function() {
+            const video = document.getElementById('video');
+            const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, 320, 240);
+        });
+
+        navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            const video = document.getElementById('video');
+            video.srcObject = stream;
+        })
+        .catch(error => {
+            console.error('Error accessing webcam:', error);
+        });
+    </script>
+    <script src="/javascripts/script.js"></script>
+</body>
+</html>

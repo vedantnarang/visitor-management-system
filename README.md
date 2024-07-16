@@ -50,7 +50,8 @@ Now go to the browser and type "localhost:3000"to see the form and then add all 
 
 After submitting the form you will be able to see the visitor information in the form of an id card as shown below following a message "visitor added succesfully"
 
-![Screenshot 2024-07-16 172225](https://github.com/user-attachments/assets/8d7ced8e-4717-4c92-af2f-6ca1375e382f)
+![Screenshot 2024-07-16 173842](https://github.com/user-attachments/assets/e750ac16-eed3-4e66-bfbc-0f2df334b283)
+
 
 Then go on to check the mongodb into the visitor_management , you will be able to see the details of the visitor (make sure you refresh)
 

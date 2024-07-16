@@ -1,45 +1,59 @@
-Visitor Management Application (VMS)
-What is VMS?
+***Visitor Management Application (VMS)***
+
+**What is VMS?**
 
 VMS (Visitor Management System) is a web application designed to streamline the visitor registration process for organizations. It replaces manual record-keeping with a user-friendly interface, improving efficiency and security.
 
-Features:
+**Features:**
 
 Intuitive Visitor Registration: Visitors easily enter their details (Name, Email, Mobile No.) through a web form.
 Automatic Check-In: Upon check-in, the system captures the current time and sends notification emails and SMS alerts (optional) to the designated host.
-Check-Out with Edit: Visitors can edit their details and record their checkout time.
 Automated Check-Out Notifications: After checkout, the system sends a confirmation email and SMS (optional) to the visitor.
 Configurable Host: Company can define the host details (email and phone number) in a configuration file (config.json).
-Technology Stack:
 
-Front-End: HTML, CSS, Bootstrap (for responsive design)
-Back-End: Node.js (JavaScript runtime environment for server-side operations)
-Database: MySQL (relational database for storing visitor data) (Note: Configuration details for MySQL setup are provided in setup.txt)
-SMS API (Optional): Twilio (external service for sending SMS alerts. Requires a Twilio account and configuration in config.json)
-Email Notifications: SMTP protocol (standard for sending emails)
-Installation:
+**Technology Stack:**
 
-Install Dependencies:
-Bash
+Front-End: HTML, CSS, JS
+Back-End: Node.js (with express.js)
+Database: Mongodb
+
+**Install Dependencies:**
+Use the node package manager [npm](https://www.npmjs.com/) to first install all modules listed in package.json.
+
+```bash
 npm install
-Use code with caution.
 
-Configure Database: Follow instructions in setup.txt to install and configure MySQL.
-Configure Twilio (Optional):
-Create a Twilio trial account and obtain the following credentials:
-Authorization SID and Token
-Free trial phone number (use this for the "from" field in config.json)
-Verified phone number (use this for the "to" field in config.json)
-Input these details in config.json.
-Start the Application:
-Bash
-node index.js
-Use code with caution.
+```
 
-Disclaimer:
+**Start the Application:**
+```bash
+npx nodemon
+
+```
+(make sure that nodemon is installed globally or locally on your device)
+
+Then go to your browser and search "localhost:3000"
+
+**Disclaimer:**
 
 This application serves as a basic VMS and can be further customized to meet specific needs.
 
-Output Files:
+**Output Files:**
 
-The repository includes sample output files (output1 and output2) for demonstration purposes.
+Once you Start the localhost you will see the database created into your mongodb app(make sure its open) 
+
+![Screenshot 2024-07-16 155219](https://github.com/user-attachments/assets/dfa942a8-6cbe-4bbf-a485-aa4904266756)
+
+Now go to the browser and type "localhost:3000"to see the form and then add all of teh information ensuring you don't leave the required ones empty
+
+![Screenshot 2024-07-16 172125](https://github.com/user-attachments/assets/8f039943-5d4e-42b8-bf43-4de7bb68cd38)
+
+After submitting the form you will be able to see the visitor information in the form of an id card as shown below following a message "visitor added succesfully"
+
+![Screenshot 2024-07-16 172225](https://github.com/user-attachments/assets/8d7ced8e-4717-4c92-af2f-6ca1375e382f)
+
+Then go on to check the mongodb into the visitor_management , you will be able to see the details of the visitor (make sure you refresh)
+
+![Screenshot 2024-07-16 155836](https://github.com/user-attachments/assets/f25aabbc-e2f2-48a2-9274-2b27c3ec32da)
+
+
